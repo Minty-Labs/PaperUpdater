@@ -33,3 +33,8 @@ Logic below is held and processed in <a href="PaperConsoleUpdater/PaperApiJson.c
 	<li>Creation of batch file method</li>
 	<li>more ...</li>
 </ul>
+
+<h2>Credits and Ownerships</h2>
+<ul>
+	<li>Program Icon (Logo) is directly from papermc's website header logo. All rights go to papermc for the logo. <i>If someone from the papermc team has an issue with me using your logo, please do not hesitate to email <a href="mailto:admin@mintlily.lgbt">Lily C.</a></i></li>
+</ul>
