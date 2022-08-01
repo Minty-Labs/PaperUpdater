@@ -1,0 +1,28 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <OutputType>Exe</OutputType>
+        <TargetFramework>net6.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+        <RootNamespace>PaperUpdater</RootNamespace>
+        <LangVersion>latest</LangVersion>
+        <ApplicationIcon>..\Resources\PaperMC_Logo.ico</ApplicationIcon>
+        <Company>Minty Labs</Company>
+        <Product>PaperUpdater (Console)</Product>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+        <FileVersion>1.0.0.0</FileVersion>
+        <NeutralLanguage>en</NeutralLanguage>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <None Include="..\Resources\PaperMC_Logo.ico">
+        <Link>PaperMC_Logo.ico</Link>
+      </None>
+    </ItemGroup>
+
+</Project>

@@ -1,0 +1,7 @@
+PaperConsoleUpdater/bin/
+PaperConsoleUpdater/obj/
+/packages/
+riderModule.iml
+/_ReSharper.Caches/
+Build/
+.idea/
