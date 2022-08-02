@@ -29,12 +29,23 @@ Logic below is held and processed in <a href="PaperConsoleUpdater/PaperApiJson.c
 
 <h2>To Do</h2>
 <ul>
-	<li>Manual input of minecraft version, instead of a static version</li>
 	<li>Creation of batch file method</li>
+	<li>Get Total latest PaperMC version</li>
 	<li>more ...</li>
 </ul>
 
 <h2>Credits and Ownerships</h2>
 <ul>
 	<li>Program Icon (Logo) is directly from papermc's website header logo. All rights go to papermc for the logo. <i>If someone from the papermc team has an issue with me using your logo, please do not hesitate to email <a href="mailto:admin@mintlily.lgbt">Lily C.</a></i></li>
+</ul>
+
+<h2>Disclamer</h2>
+I, Lily, am in no way affiliacted with PaperMC nor Microsoft/Mojang Studios. Any and all images' rights go their original owners.<br>
+
+<h2>Application Info</h2>
+<ul>
+	<li>Type: <code>Console Application (dotNET 6)</code></li>
+	<li>Version: <code>v1.1.0.0</code></li>
+	<li>Nuget Packages: <code>NONE</code></li>
+	<li>Checksum SHA-256: <code>1ea7e6a70981abd43538aad3bd98233645e9e0575710821352daeeb47f72e007</code></li>
 </ul>
