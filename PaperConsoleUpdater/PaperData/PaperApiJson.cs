@@ -1,6 +1,7 @@
 ﻿using Newtonsoft.Json;
+using PaperUpdater.Data;
 
-namespace PaperUpdater;
+namespace PaperUpdater.PaperData;
 
 public class Application {
     [JsonProperty("name")] public string name { get; set; }
@@ -42,19 +43,21 @@ public class Root {
 public static class PaperApiJson {
     private static Root? PaperJsonData { get; set; }
     
-    public static void LoadPaperJson() {
+    public static void LoadPaperJson(string minecraftVersion) {
         var http = new HttpClient();
-        var json = http.GetStringAsync("https://api.papermc.io/v2/projects/paper/versions/1.19.1/builds").GetAwaiter().GetResult();
+        var json = http.GetStringAsync($"https://api.papermc.io/v2/projects/paper/versions/{minecraftVersion}/builds").GetAwaiter().GetResult();
         PaperJsonData = JsonConvert.DeserializeObject<Root>(json) ?? throw new Exception();
     }
 
     private static string GetLatestPaperUrl() {
-        if (PaperJsonData?.version != "1.19.1") {
-            Logger.Error("Paper version is not 1.19.1");
+        var version = Program.PickingLatest ? Server.LatestPaperMcVersion : Self.ContainedMinecraftVersion;
+        
+        if (PaperJsonData?.version != version) {
+            Logger.Error($"Paper version is not {version}");
             return "NO DATA";
         }
         
-        var lastBuild = PaperJsonData.builds.LastOrDefault();
+        var lastBuild = PaperJsonData?.builds.LastOrDefault();
         if (lastBuild?.channel != "default") {
             Logger.Error("Paper build channel is not default");
             return "NO DATA";
@@ -62,7 +65,7 @@ public static class PaperApiJson {
         
         var buildNumber = lastBuild.build;
         var buildName = lastBuild.downloads.application.name;
-        return $"https://api.papermc.io/v2/projects/paper/versions/1.19.1/builds/{buildNumber}/downloads/{buildName}";
+        return $"https://api.papermc.io/v2/projects/paper/versions/{version}/builds/{buildNumber}/downloads/{buildName}";
     }
 
     public static void UpdateJarFile() {

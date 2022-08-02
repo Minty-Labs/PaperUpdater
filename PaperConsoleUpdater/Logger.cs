@@ -1,4 +1,6 @@
-﻿namespace PaperUpdater; 
+﻿using System;
+
+namespace PaperUpdater; 
 
 public static class Logger {
     public static void WriteLineCentered(string line, int referenceLength = -1) {
@@ -8,25 +10,63 @@ public static class Logger {
         Console.WriteLine(line.PadLeft(line.Length + Console.WindowWidth / 2 - referenceLength / 2));
     }
     
+    private static void WriteLinesCentered(IList<string> lines) {
+        var longestLine = lines.Max(a => a.Length);
+        foreach (var line in lines)
+            WriteLineCentered(line, longestLine);
+    }
+    
+    public static void WriteSeparator(char character, ConsoleColor color = ConsoleColor.White) {
+        var foreColor = Console.ForegroundColor;
+        Console.ForegroundColor = color;
+        Console.WriteLine("".PadLeft(Console.WindowWidth, character));
+        Console.ForegroundColor = foreColor;
+    }
+    
     private static string GetTimestamp() => DateTime.Now.ToString("HH:mm:ss.fff");
     
-    private static void ResetColors() => Console.ForegroundColor = ConsoleColor.White;
+    public static void ResetColors() => Console.ForegroundColor = ConsoleColor.White;
     
     public static void Space() => Console.WriteLine("");
 
-    public static void Log(object s) {
-        ResetColors();
+    public static void Log(object s, bool withTimestamp = true) {
         var foregroundColor = Console.ForegroundColor;
         var timestamp = GetTimestamp();
+        if (withTimestamp) {
+            Console.Write("[");
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.Write(timestamp);
+            Console.ForegroundColor = foregroundColor;
+            Console.Write("] ");
+        }
         Console.Write("[");
-        Console.ForegroundColor = ConsoleColor.Green;
-        Console.Write(timestamp);
-        Console.ForegroundColor = foregroundColor;
-        Console.Write("] [");
         Console.ForegroundColor = ConsoleColor.Cyan;
         Console.Write("PaperUpdater");
         Console.ForegroundColor = foregroundColor;
-        Console.WriteLine("] " + s);
+        Console.WriteLine($"] {s}");
+        Console.ForegroundColor = foregroundColor;
+    }
+    
+    public static void Warn(object s, bool withTimestamp = true) {
+        var foregroundColor = Console.ForegroundColor;
+        var timestamp = GetTimestamp();
+        if (withTimestamp) {
+            Console.Write("[");
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.Write(timestamp);
+            Console.ForegroundColor = foregroundColor;
+            Console.Write("] ");
+        }
+        Console.Write("[");
+        Console.ForegroundColor = ConsoleColor.Cyan;
+        Console.Write("PaperUpdater");
+        Console.Write("] [");
+        Console.ForegroundColor = ConsoleColor.DarkYellow;
+        Console.Write("WARN");
+        Console.ForegroundColor = foregroundColor;
+        Console.Write("] ");
+        Console.ForegroundColor = ConsoleColor.DarkYellow;
+        Console.WriteLine(s);
         Console.ForegroundColor = foregroundColor;
     }
     
@@ -75,5 +115,45 @@ public static class Logger {
         Console.WriteLine("The console error limit has been reached.");
         Console.ForegroundColor = foregroundColor;
         _errorCount++;
+    }
+
+    public static void InputOption(int number, string text, bool optionDisabled = false) {
+        var foregroundColor = Console.ForegroundColor;
+        Console.ForegroundColor = ConsoleColor.Yellow;
+        Console.Write($"{number}. ");
+        Console.ForegroundColor = optionDisabled ? ConsoleColor.DarkGray : foregroundColor;
+        Console.WriteLine(text);
+        Console.ForegroundColor = foregroundColor;
+    }
+
+    public static void Input(string text) {
+        var foregroundColor = Console.ForegroundColor;
+        Console.ForegroundColor = foregroundColor;
+        Console.Write("[");
+        Console.ForegroundColor = ConsoleColor.Yellow;
+        Console.Write("INPUT");
+        Console.ForegroundColor = foregroundColor;
+        Console.Write($"] {text}");
+        Console.ForegroundColor = ConsoleColor.Yellow;
+    }
+
+    public static void Intro() {
+        ResetColors();
+        // Console.Write("Welcome, thanks for using ");
+        // Console.ForegroundColor = ConsoleColor.Cyan;
+        // Console.Write("PaperUpdater");
+        WriteLineCentered("Welcome, thanks for using PaperUpdater!");
+        ResetColors();
+        // Console.WriteLine("!");
+    }
+    
+    public static void SendUpdateNotice() {
+        var foreColor = Console.ForegroundColor;
+        Console.ForegroundColor = ConsoleColor.Red;
+        WriteSeparator('-', ConsoleColor.Red);
+        WriteLineCentered("A newer version of PaperUpdater is available!");
+        WriteSeparator('-', ConsoleColor.Red);
+        Console.ForegroundColor = foreColor;
+        Space();
     }
 }
