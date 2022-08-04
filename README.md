@@ -25,12 +25,18 @@ Logic below is held and processed in <a href="PaperConsoleUpdater/PaperApiJson.c
 			<li>Then write a new file with the bytes gathered from the completed URL and saves it as <code>paper.jar</code></li>
 		</ul>
 	</li>
+	<li>Running the server
+		<ul>
+			<li>You have the ability to create a basic preset batch file</li>
+			<li>You can also have this application run that batch file directly</li>
+		</ul>
+	</li>
 </ul>
 
 <h2>To Do</h2>
 <ul>
-	<li>Creation of batch file method</li>
 	<li>Get Total latest PaperMC version</li>
+	<li>Maybe have the application directly run the server from entirely within</li>
 	<li>more ...</li>
 </ul>
 
@@ -45,7 +51,7 @@ I, Lily, am in no way affiliacted with PaperMC nor Microsoft/Mojang Studios. Any
 <h2>Application Info</h2>
 <ul>
 	<li>Type: <code>Console Application (dotNET 6)</code></li>
-	<li>Version: <code>v1.1.0.0</code></li>
-	<li>Nuget Packages: <code>Newtonsoft.Json - 13.0.1</code></li>
-	<li>Checksum SHA-256: <code>1ea7e6a70981abd43538aad3bd98233645e9e0575710821352daeeb47f72e007</code></li>
+	<li>Version: <code>v1.2.0.0</code></li>
+	<li>Nuget Packages: <code>Newtonsoft.Json - 13.0.2-beta1</code></li>
+	<li>Checksum SHA-256: <code>4d6bc1f5f86293b081cf4ee3dacebc78c89ef412cce6668ae80ad07fdfa34d13</code></li>
 </ul>
