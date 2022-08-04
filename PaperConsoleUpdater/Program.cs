@@ -2,6 +2,7 @@
 using System.Reflection;
 using PaperUpdater.PaperData;
 using PaperUpdater.Data;
+using PaperUpdater.Functions;
 
 namespace PaperUpdater; 
 
@@ -23,7 +24,8 @@ public static class Program {
         Logger.InputOption(1, "Update to latest version", true);
         Logger.InputOption(2, "Update to specific minecraft version");
         Logger.InputOption(3, "Update to latest Paper version from your remembered minecraft version");
-        Logger.InputOption(4, "Create a windows batch script to easily run your server", true);
+        Logger.InputOption(4, "Create a windows batch script to easily run your server");
+        Logger.InputOption(5, "Run the batch file and close this application");
         Logger.Space();
         Logger.Input("Please select an option: ");
         
@@ -55,13 +57,25 @@ public static class Program {
                 Logger.Log("One moment...", false);
                 PaperApiJson.LoadPaperJson(Self.ContainedMinecraftVersion!);
                 PaperApiJson.UpdateJarFile();
-                Process.GetCurrentProcess().Kill();
-                break;
-            case "4:":
-                // Create a windows batch script to easily run your server
-                Logger.Log("This option is yet implemented.", false);
-                goto Start;
+                // Process.GetCurrentProcess().Kill();
                 // break;
+                Logger.Space();
+                goto Start;
+            case "4":
+                // Create a windows batch script to easily run your server
+                BatchFuncs.CreateFile(true);
+                Logger.Space();
+                goto Start;
+            case "5":
+                // Run the batch file and close this application
+                if (!File.Exists(Path.Combine(Environment.CurrentDirectory, "paper.jar"))) {
+                    Logger.Warn("It seems you do not have paper.jar in your current directory. Please download it before running this command.", false);
+                    Logger.Space();
+                    goto Start;
+                }
+                BatchFuncs.RunServerFromFile();
+                Logger.Space();
+                break;
             default:
                 Logger.Error("Invalid input, please select an option from the list above (1 - 3).");
                 goto Start;
