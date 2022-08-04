@@ -60,12 +60,13 @@ public static class Logger {
         Console.Write("[");
         Console.ForegroundColor = ConsoleColor.Cyan;
         Console.Write("PaperUpdater");
+        Console.ForegroundColor = foregroundColor;
         Console.Write("] [");
-        Console.ForegroundColor = ConsoleColor.DarkYellow;
+        Console.ForegroundColor = ConsoleColor.Yellow;
         Console.Write("WARN");
         Console.ForegroundColor = foregroundColor;
         Console.Write("] ");
-        Console.ForegroundColor = ConsoleColor.DarkYellow;
+        Console.ForegroundColor = ConsoleColor.Yellow;
         Console.WriteLine(s);
         Console.ForegroundColor = foregroundColor;
     }

@@ -21,8 +21,8 @@ public static class Program {
         Logger.WriteSeparator('=');
         Logger.Space();
         Start:
-        Logger.InputOption(1, "Update to latest version", true);
-        Logger.InputOption(2, "Update to specific minecraft version");
+        Logger.InputOption(1, "Download/Update to latest both minecraft and paper version", true);
+        Logger.InputOption(2, "Download a specific paper minecraft server version");
         Logger.InputOption(3, "Update to latest Paper version from your remembered minecraft version");
         Logger.InputOption(4, "Create a windows batch script to easily run your server");
         Logger.InputOption(5, "Run the batch file and close this application");
@@ -31,7 +31,7 @@ public static class Program {
         
         var input = Console.ReadLine();
         Logger.ResetColors();
-        
+        Logger.Space();
         switch (input) {
             case "1":
                 // Update to latest version
@@ -48,8 +48,10 @@ public static class Program {
                 Self.Save();
                 PaperApiJson.LoadPaperJson(inputMcVersion!);
                 PaperApiJson.UpdateJarFile();
-                Process.GetCurrentProcess().Kill();
-                break;
+                // Process.GetCurrentProcess().Kill();
+                // break;
+                Logger.Space();
+                goto Start;
             case "3":
                 // Update to latest Paper version from your remembered minecraft version
                 PickingLatest = false;
@@ -78,6 +80,7 @@ public static class Program {
                 break;
             default:
                 Logger.Error("Invalid input, please select an option from the list above (1 - 3).");
+                Logger.Space();
                 goto Start;
         }
     }
