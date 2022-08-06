@@ -51,7 +51,7 @@ I, Lily, am in no way affiliacted with PaperMC nor Microsoft/Mojang Studios. Any
 <h2>Application Info</h2>
 <ul>
 	<li>Type: <code>Console Application (dotNET 6)</code></li>
-	<li>Version: <code>v1.2.0.0</code></li>
+	<li>Version: <code>v1.3.0.0</code></li>
 	<li>Nuget Packages: <code>Newtonsoft.Json - 13.0.2-beta1</code></li>
-	<li>Checksum SHA-256: <code>4d6bc1f5f86293b081cf4ee3dacebc78c89ef412cce6668ae80ad07fdfa34d13</code></li>
+	<li>Checksum SHA-256: <code>72b4da9c9bae00785a76f8c0a336c7248b79c2e27963e7219b2891ceb882d4ee</code></li>
 </ul>

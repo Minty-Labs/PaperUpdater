@@ -6,6 +6,7 @@ public static class BatchFuncs {
     private const string BatchFileContents =
         @"@ECHO OFF
 title Personal Minecraft Server
+
 :loop
 java -Xmx2048M -Xms2048M -jar paper.jar -d64 -nogui
 goto loop
