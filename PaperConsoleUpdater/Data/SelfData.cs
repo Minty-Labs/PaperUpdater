@@ -45,7 +45,7 @@ public static class Server {
     public static void Init() {
         var http = new HttpClient();
         var data = Program.IsRunningDebug ? File.ReadAllText(Path.Combine(Environment.CurrentDirectory, "ServerData.json")) : 
-            http.GetStringAsync("https://raw.githubusercontent.com/Minty-Labs/PaperUpdater/master/PaperConsoleUpdater/Data/ServerData.json").GetAwaiter().GetResult();
+            http.GetStringAsync("https://raw.githubusercontent.com/Minty-Labs/PaperUpdater/master/Resources/ServerData.json").GetAwaiter().GetResult();
         
         var d = JsonConvert.DeserializeObject<ServerData>(data) ?? throw new Exception();
         LatestPaperMcVersion = d.LatestPaperMcVersion;
