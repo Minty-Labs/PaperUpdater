@@ -8,13 +8,13 @@ Logic below is held and processed in <a href="PaperConsoleUpdater/PaperApiJson.c
 		<ul>
 			<li>Gets JSON data from API URL:
 				<ul>
-					<li>API URL: <code>https://api.papermc.io/v2/projects/paper/versions/1.19.1/builds</code></li>
-					<li>Outputs: JSON structured data with every build of paper 1.19.1</li>
+					<li>API URL: <code>https://api.papermc.io/v2/projects/paper/versions/1.19.2/builds</code></li>
+					<li>Outputs: JSON structured data with every build of paper 1.19.2</li>
 				</ul>
 			</li>
 			<li>It gets the last entry in the list of <code>builds</code> (last is latest)</li>
 			<li>It then verifies that the <code>channel</code> is <code>default</code></li>
-			<li>Outputs a completed URL <code>https://api.papermc.io/v2/projects/paper/versions/1.19.1/builds/{buildNumber}/downloads/{buildName}</code></li>
+			<li>Outputs a completed URL <code>https://api.papermc.io/v2/projects/paper/versions/1.19.2/builds/{buildNumber}/downloads/{buildName}</code></li>
 		</ul>
 	</li>
 	<li>Updating the file
