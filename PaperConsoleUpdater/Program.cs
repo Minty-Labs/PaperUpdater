@@ -37,6 +37,7 @@ public static class Program {
                 // Update to latest version
                 // PickingLatest = true;
                 Logger.Warn("This option is now yet implemented.");
+                Logger.ResetColors();
                 goto Start;
                 // break;
             case "2":
@@ -51,22 +52,25 @@ public static class Program {
                 // Process.GetCurrentProcess().Kill();
                 // break;
                 Logger.Space();
+                Logger.ResetColors();
                 goto Start;
             case "3":
                 // Update to latest Paper version from your remembered minecraft version
                 PickingLatest = false;
                 Logger.Log("This program will automatically close once it is finished.", false);
                 Logger.Log("One moment...", false);
-                PaperApiJson.LoadPaperJson(Self.ContainedMinecraftVersion!);
+                PaperApiJson.LoadPaperJson(Server.LatestPaperMcVersion!);
                 PaperApiJson.UpdateJarFile();
                 // Process.GetCurrentProcess().Kill();
                 // break;
                 Logger.Space();
+                Logger.ResetColors();
                 goto Start;
             case "4":
                 // Create a windows batch script to easily run your server
                 BatchFuncs.CreateFile(true);
                 Logger.Space();
+                Logger.ResetColors();
                 goto Start;
             case "5":
                 // Run the batch file and close this application
@@ -77,10 +81,18 @@ public static class Program {
                 }
                 BatchFuncs.RunServerFromFile();
                 Logger.Space();
+                Logger.ResetColors();
+                break;
+            case "c":
+            case "cancel":
+            case "exit":
+            case "quit":
+                Process.GetCurrentProcess().Kill();
                 break;
             default:
                 Logger.Error("Invalid input, please select an option from the list above (1 - 3).");
                 Logger.Space();
+                Logger.ResetColors();
                 goto Start;
         }
     }
