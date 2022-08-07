@@ -36,7 +36,6 @@ Logic below is held and processed in <a href="PaperConsoleUpdater/PaperApiJson.c
 <h2>To Do</h2>
 <ul>
 	<li>Get Total latest PaperMC version</li>
-	<li>Maybe have the application directly run the server from entirely within</li>
 	<li>more ...</li>
 </ul>
 
@@ -46,12 +45,12 @@ Logic below is held and processed in <a href="PaperConsoleUpdater/PaperApiJson.c
 </ul>
 
 <h2>Disclamer</h2>
-I, Lily, am in no way affiliacted with PaperMC nor Microsoft/Mojang Studios. Any and all images' rights go their original owners.<br>
+I, Lily, am in no way affiliated with PaperMC nor Microsoft/Mojang Studios. Any and all images' rights go their original owners.<br>
 
 <h2>Application Info</h2>
 <ul>
 	<li>Type: <code>Console Application (dotNET 6)</code></li>
-	<li>Version: <code>v1.3.0.0</code></li>
+	<li>Version: <code>v1.3.1.0</code></li>
 	<li>Nuget Packages: <code>Newtonsoft.Json - 13.0.2-beta1</code></li>
-	<li>Checksum SHA-256: <code>72b4da9c9bae00785a76f8c0a336c7248b79c2e27963e7219b2891ceb882d4ee</code></li>
+	<li>Checksum SHA-256: <code>3b1f393ba9c40648e912b184832f80744c091d9d639b0976756aed4237a1abb8</code></li>
 </ul>
