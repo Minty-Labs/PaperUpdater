@@ -23,9 +23,9 @@ public static class Program {
         Start:
         Logger.InputOption(1, "Download/Update to latest both minecraft and paper version", true);
         Logger.InputOption(2, "Download a specific paper minecraft server version");
-        Logger.InputOption(3, "Update to latest Paper version from your remembered minecraft version");
+        Logger.InputOption(3, $"Update to latest Paper version from your remembered minecraft version -> {Self.ContainedMinecraftVersion}");
         Logger.InputOption(4, "Create a windows batch script to easily run your server");
-        Logger.InputOption(5, "Run the batch file and close this application");
+        Logger.InputOption(5, "Run the batch file from this application");
         Logger.Space();
         Logger.Input("Please select an option: ");
         
