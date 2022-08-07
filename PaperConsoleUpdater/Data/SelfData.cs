@@ -12,7 +12,7 @@ public static class Self {
     private static string _path = IsWindows ? 
         Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Minty Labs", "PaperUpdater") : 
         Environment.CurrentDirectory;
-    private static SelfData? Data { get; set; }
+    public static SelfData? Data { get; set; }
     public static string? ContainedMinecraftVersion { get; set; }
 
     public static void Init() {

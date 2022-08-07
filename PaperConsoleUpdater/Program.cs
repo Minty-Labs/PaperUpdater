@@ -46,7 +46,10 @@ public static class Program {
                 Logger.Input("Please enter the minecraft version you want to update to download: ");
                 var inputMcVersion = Console.ReadLine();
                 Self.ContainedMinecraftVersion = inputMcVersion;
+                Self.Data!.RememberedMinecraftVersion = inputMcVersion;
+                Logger.ResetColors();
                 Self.Save();
+                Logger.Log($"Saved minecraft version {Self.ContainedMinecraftVersion} to file from expected {inputMcVersion}.");
                 PaperApiJson.LoadPaperJson(inputMcVersion!);
                 PaperApiJson.UpdateJarFile();
                 // Process.GetCurrentProcess().Kill();
