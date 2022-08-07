@@ -40,7 +40,7 @@ Logic below is held and processed in <a href="PaperConsoleUpdater/PaperApiJson.c
 </ul>
 
 <h1>Linux</h1>
-Recomended actions needed:
+Recommended actions needed:
 <ul>
 	<li>Install .NET 6.0+ <a href="https://docs.microsoft.com/en-us/dotnet/core/install/linux" target="_blank">Using Microsoft's Guide</a>.</li>
 	<li>Install Screen <a href="https://linuxhint.com/screen-linux/" target="_blank">Using this guide</a>.</li>
@@ -52,7 +52,7 @@ Running it:
 	<li><code>cd</code> into your desired folder (Preferably where your server is installed)</li>
 	<li><code>wget</code> the latest version ( <code>wget https://github.com/Minty-Labs/PaperUpdater/releases/latest/download/PaperConsoleUpdater</code> )</li>
 	<li>make sure to <code>sudo chmod +x PaperConsoleUpdater</code></li>
-	<li>Run the program (<code>./PaperConsoleUpdater</code></li>
+	<li>Run the program (<code>./PaperConsoleUpdater</code>)</li>
 </ul>
 
 <h2>Credits and Ownerships</h2>
