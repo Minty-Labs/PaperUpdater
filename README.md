@@ -39,6 +39,22 @@ Logic below is held and processed in <a href="PaperConsoleUpdater/PaperApiJson.c
 	<li>more ...</li>
 </ul>
 
+<h1>Linux</h1>
+Recomended actions needed:
+<ul>
+	<li>Install .NET 6.0+ <a href="https://docs.microsoft.com/en-us/dotnet/core/install/linux" target="_blank">Using Microsoft's Guide</a>.</li>
+	<li>Install Screen <a href="https://linuxhint.com/screen-linux/" target="_blank">Using this guide</a>.</li>
+</ul>
+Running it:
+<ul>
+	<li>Install screen (above)</li>
+	<li>create and change into a new screen</li>
+	<li><code>cd</code> into your desired folder (Preferably where your server is installed)</li>
+	<li><code>wget</code> the latest version ( <code>wget https://github.com/Minty-Labs/PaperUpdater/releases/latest/download/PaperConsoleUpdater</code> )</li>
+	<li>make sure to <code>sudo chmod +x PaperConsoleUpdater</code></li>
+	<li>Run the program (<code>./PaperConsoleUpdater</code></li>
+</ul>
+
 <h2>Credits and Ownerships</h2>
 <ul>
 	<li>Program Icon (Logo) is directly from papermc's website header logo. All rights go to papermc for the logo. <i>If someone from the papermc team has an issue with me using your logo, please do not hesitate to email <a href="mailto:admin@mintlily.lgbt">Lily C.</a></i></li>
@@ -52,5 +68,6 @@ I, Lily, am in no way affiliated with PaperMC nor Microsoft/Mojang Studios. Any 
 	<li>Type: <code>Console Application (dotNET 6)</code></li>
 	<li>Version: <code>v1.3.1.0</code></li>
 	<li>Nuget Packages: <code>Newtonsoft.Json - 13.0.2-beta1</code></li>
-	<li>Checksum SHA-256: <code>3b1f393ba9c40648e912b184832f80744c091d9d639b0976756aed4237a1abb8</code></li>
+	<li>Checksum SHA-256: <code>3b1f393ba9c40648e912b184832f80744c091d9d639b0976756aed4237a1abb8</code> (Windows EXE)</li>
+	<li>Checksum SHA-256: <code>b0c881584137f89bced3b3cfc2abc90edc9f28a8f2fd20944fe29f8b27e941fc</code> (Linux Executable)</li>
 </ul>
