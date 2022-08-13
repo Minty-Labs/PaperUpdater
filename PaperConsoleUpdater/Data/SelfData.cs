@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using PaperUpdater.PaperData;
 
 namespace PaperUpdater.Data;
 
@@ -23,7 +24,7 @@ public static class Self {
                 Directory.CreateDirectory(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Minty Labs", "PaperUpdater"));
         }
         if (!File.Exists($"{_path}{Path.DirectorySeparatorChar}SelfData.json")) {
-            var data = new SelfData { RememberedMinecraftVersion = Server.LatestPaperMcVersion };
+            var data = new SelfData { RememberedMinecraftVersion = PaperProjectApi.LatestPaperProjectVersion };
             File.WriteAllText($"{_path}{Path.DirectorySeparatorChar}SelfData.json", JsonConvert.SerializeObject(data));
         }
         

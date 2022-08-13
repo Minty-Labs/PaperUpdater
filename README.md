@@ -2,7 +2,24 @@
 Simple <a href="https://papermc.io/downloads" target="_blank">papermc.io</a> Minecraft Server file updater. Gets the latest version, downloads it and places the file in the root of where the program EXE is. Detailed process below.
 
 <h2>How it works</h2>
-Logic below is held and processed in <a href="PaperConsoleUpdater/PaperApiJson.cs">PaperApiJson.cs</a>
+Logic below is held and processed in <a href="PaperConsoleUpdater/PaperData/PaperProjectApi.cs">PaperProjectApi.cs</a>
+<ul>
+	<li>Getting the latest paper project version
+		<ul>
+			<li>Gets JSON data from API URL:
+				<ul>
+					<li>API URL: <code>https://api.papermc.io/v2/projects/paper</code></li>
+					<li>Outputs: JSON structured data with every version group and version offered to use</li>
+				</ul>
+			</li>
+			<li>It finds the list of strings in <code>versions</code> (last is latest)</li>
+			<li>It verifies that the <code>project_id</code> is <code>paper</code></li>
+			<li>Stores it in a string that should be <code>1.19.2</code></li>
+		</ul>
+	</li>
+</ul>
+
+Logic below is held and processed in <a href="PaperConsoleUpdater/PaperData/PaperBuildApi.cs">PaperBuildApi.cs</a>
 <ul>
 	<li>Loading Paper API JSON Data
 		<ul>
@@ -35,8 +52,7 @@ Logic below is held and processed in <a href="PaperConsoleUpdater/PaperApiJson.c
 
 <h2>To Do</h2>
 <ul>
-	<li>Get Total latest PaperMC version</li>
-	<li>more ...</li>
+	<li>hmm, not sure what else to do</li>
 </ul>
 
 <h1>Linux</h1>
@@ -66,8 +82,12 @@ I, Lily, am in no way affiliated with PaperMC nor Microsoft/Mojang Studios. Any 
 <h2>Application Info</h2>
 <ul>
 	<li>Type: <code>Console Application (dotNET 6)</code></li>
-	<li>Version: <code>v1.3.1.0</code></li>
+	<li>Version: <code>v1.4.0.0</code></li>
 	<li>Nuget Packages: <code>Newtonsoft.Json - 13.0.2-beta1</code></li>
-	<li>Checksum SHA-256: <code>3b1f393ba9c40648e912b184832f80744c091d9d639b0976756aed4237a1abb8</code> (Windows EXE)</li>
-	<li>Checksum SHA-256: <code>b0c881584137f89bced3b3cfc2abc90edc9f28a8f2fd20944fe29f8b27e941fc</code> (Linux Executable)</li>
+	<li>Checksum SHA-256
+		<ul>
+			<li>Windows: <code>9d8353b620602f49a5dcc0734f7e2f77fab458879ab108852a20b7a668ae06aa</code></li>
+			<li>Linux:   <code>99d90d49c6a3a8cfe5d219d29404dfb61fcebe83ff59f74ddf1feb21dfcdb308</code></li>
+		</ul>
+	</li>
 </ul>

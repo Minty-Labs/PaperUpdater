@@ -15,6 +15,8 @@ public static class Program {
         
         ApplicationUpdateChecker.CheckForUpdates();
         Server.Init();
+        PaperProjectApi.LoadProjectData();
+        PaperProjectApi.GetLatestPaperProjectVersion();
         Self.Init();
         
         Logger.Intro();
@@ -35,11 +37,13 @@ public static class Program {
         switch (input) {
             case "1":
                 // Update to latest version
-                // PickingLatest = true;
-                Logger.Warn("This option is now yet implemented.");
+                PickingLatest = true;
+                PaperProjectApi.LoadProjectData();
+                PaperProjectApi.GetLatestPaperProjectVersion();
+                Logger.Log($"Latest version is {PaperProjectApi.LatestPaperProjectVersion}");
+                PaperBuildApiJson.LoadPaperJson(PaperProjectApi.LatestPaperProjectVersion!);
                 Logger.ResetColors();
                 goto Start;
-                // break;
             case "2":
                 // Update to specific minecraft version
                 PickingLatest = false;
