@@ -1,5 +1,5 @@
 <h1>PaperUpdater</h1>
-Simple <a href="https://papermc.io/downloads" target="_blank">papermc.io</a> Minecraft Server file updater. Gets the latest version, downloads it and places the file in the root of where the program EXE is. Detailed process below.
+Simple <a href="https://papermc.io/downloads" target="_blank">papermc.io</a> Minecraft Server file updater. Gets the latest version, downloads it and places the file in the root of where this program's executable file is. Detailed process below.
 
 <h2>How it works</h2>
 Logic below is held and processed in <a href="PaperConsoleUpdater/PaperData/PaperProjectApi.cs">PaperProjectApi.cs</a>
@@ -76,7 +76,7 @@ Running it:
 	<li>Program Icon (Logo) is directly from papermc's website header logo. All rights go to papermc for the logo. <i>If someone from the papermc team has an issue with me using your logo, please do not hesitate to email <a href="mailto:admin@mintlily.lgbt">Lily C.</a></i></li>
 </ul>
 
-<h2>Disclamer</h2>
+<h2>Disclaimer</h2>
 I, Lily, am in no way affiliated with PaperMC nor Microsoft/Mojang Studios. Any and all images' rights go their original owners.<br>
 
 <h2>Application Info</h2>
