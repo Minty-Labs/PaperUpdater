@@ -54,22 +54,17 @@ public static class Program {
                 Logger.ResetColors();
                 Self.Save();
                 Logger.Log($"Saved minecraft version {Self.ContainedMinecraftVersion} to file from expected {inputMcVersion}.");
-                PaperApiJson.LoadPaperJson(inputMcVersion!);
-                PaperApiJson.UpdateJarFile();
-                // Process.GetCurrentProcess().Kill();
-                // break;
+                PaperBuildApiJson.LoadPaperJson(inputMcVersion!);
+                PaperBuildApiJson.UpdateJarFile();
                 Logger.Space();
                 Logger.ResetColors();
                 goto Start;
             case "3":
                 // Update to latest Paper version from your remembered minecraft version
                 PickingLatest = false;
-                Logger.Log("This program will automatically close once it is finished.", false);
                 Logger.Log("One moment...", false);
-                PaperApiJson.LoadPaperJson(Server.LatestPaperMcVersion!);
-                PaperApiJson.UpdateJarFile();
-                // Process.GetCurrentProcess().Kill();
-                // break;
+                PaperBuildApiJson.LoadPaperJson(Self.ContainedMinecraftVersion!);
+                PaperBuildApiJson.UpdateJarFile();
                 Logger.Space();
                 Logger.ResetColors();
                 goto Start;

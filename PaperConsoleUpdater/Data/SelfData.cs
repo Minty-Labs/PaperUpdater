@@ -35,7 +35,7 @@ public static class Self {
     public static void Save() => File.WriteAllText($"{_path}{Path.DirectorySeparatorChar}SelfData.json", JsonConvert.SerializeObject(Data));
 }
 
-public class ServerData {
+/*public class ServerData {
     [JsonProperty("Latest PaperMC Version")]
     public string? LatestPaperMcVersion { get; set; }
 }
@@ -51,4 +51,4 @@ public static class Server {
         var d = JsonConvert.DeserializeObject<ServerData>(data) ?? throw new Exception();
         LatestPaperMcVersion = d.LatestPaperMcVersion;
     }
-}
+}*/
