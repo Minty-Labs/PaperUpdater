@@ -42,6 +42,17 @@ Logic below is held and processed in <a href="PaperConsoleUpdater/PaperData/Pape
 			<li>Then write a new file with the bytes gathered from the completed URL and saves it as <code>paper.jar</code></li>
 		</ul>
 	</li>
+</ul>
+
+Logic below is held and processed in <a href="PaperConsoleUpdater/Functions/BatchFuncs.cs">BatchFuncs.cs</a>
+<ul>
+	<li>Creating a batch file
+		<ul>
+			<li>
+				Creates a simple batch file to easily run your sever
+			</li>
+		</ul>
+	</li>
 	<li>Running the server
 		<ul>
 			<li>You have the ability to create a basic preset batch file</li>
