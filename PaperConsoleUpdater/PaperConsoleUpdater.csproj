@@ -10,8 +10,8 @@
         <ApplicationIcon>..\Resources\PaperMC_Logo.ico</ApplicationIcon>
         <Company>Minty Labs</Company>
         <Product>PaperUpdater (Console)</Product>
-        <AssemblyVersion>1.3.1.0</AssemblyVersion>
-        <FileVersion>1.3.1.0</FileVersion>
+        <AssemblyVersion>1.4.0.0</AssemblyVersion>
+        <FileVersion>1.4.0.0</FileVersion>
         <NeutralLanguage>en</NeutralLanguage>
     </PropertyGroup>
 
