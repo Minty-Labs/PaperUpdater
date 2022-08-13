@@ -1,8 +1,8 @@
 ﻿namespace PaperUpdater.Data; 
 
 public static class ApplicationUpdateChecker {
-    private static string[] _ignoredVersionTags = { "1.0.0", "1.1.0", "1.2.0", "1.3.0" };
-    private static readonly string LazyTag = "\"tag_name\": \"" + "1.3.1" + "\"";
+    private static string[] _ignoredVersionTags = { "1.0.0", "1.1.0", "1.2.0", "1.3.0", "1.3.1" };
+    private static readonly string LazyTag = "\"tag_name\": \"" + "1.4.0" + "\"";
     private const string GitHub = "https://api.github.com/repos/Minty-Labs/PaperUpdater/releases";
 
     private static async Task<string> GetString() {

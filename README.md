@@ -86,8 +86,8 @@ I, Lily, am in no way affiliated with PaperMC nor Microsoft/Mojang Studios. Any 
 	<li>Nuget Packages: <code>Newtonsoft.Json - 13.0.2-beta1</code></li>
 	<li>Checksum SHA-256
 		<ul>
-			<li>Windows: <code>9d8353b620602f49a5dcc0734f7e2f77fab458879ab108852a20b7a668ae06aa</code></li>
-			<li>Linux:   <code>99d90d49c6a3a8cfe5d219d29404dfb61fcebe83ff59f74ddf1feb21dfcdb308</code></li>
+			<li>Windows: <code>fd49eafb9adacb2ad917559eaf2a9fd33c477147c53005eda9ebd520de9a3df6</code></li>
+			<li>Linux:   <code>6fa1ee49f3fd10e75ac37c32b57ad0b8ac76daddba6d66829a492b142f11178d</code></li>
 		</ul>
 	</li>
 </ul>
