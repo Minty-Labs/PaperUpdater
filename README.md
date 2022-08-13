@@ -49,7 +49,7 @@ Logic below is held and processed in <a href="PaperConsoleUpdater/Functions/Batc
 	<li>Creating a batch file
 		<ul>
 			<li>
-				Creates a simple batch file to easily run your sever
+				Creates a simple batch file to easily run your server
 			</li>
 		</ul>
 	</li>
