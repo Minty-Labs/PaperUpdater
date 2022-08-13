@@ -10,11 +10,11 @@ public static class Program {
     internal static bool PickingLatest, IsRunningDebug; // if false, we're picking the remembered version of the paper
     
     public static void Main(string[] args) {
+        Logger.OriginalColor = Console.ForegroundColor;
         IsRunningDebug = Environment.CommandLine.Contains("--debug");
         Console.Title = $"PaperUpdater v{Assembly.GetExecutingAssembly().GetName().Version} by Minty Labs (MintLily){(IsRunningDebug ? " - Running in debug mode" : "")}";
         
         ApplicationUpdateChecker.CheckForUpdates();
-        Server.Init();
         PaperProjectApi.LoadProjectData();
         PaperProjectApi.GetLatestPaperProjectVersion();
         Self.Init();
@@ -23,9 +23,9 @@ public static class Program {
         Logger.WriteSeparator('=');
         Logger.Space();
         Start:
-        Logger.InputOption(1, "Download/Update to latest both minecraft and paper version", true);
+        Logger.InputOption(1, "Download/Update to latest paper project version", PaperProjectApi.LatestPaperProjectVersion ?? "unknown");
         Logger.InputOption(2, "Download a specific paper minecraft server version");
-        Logger.InputOption(3, $"Update to latest Paper version from your remembered minecraft version -> {Self.ContainedMinecraftVersion}");
+        Logger.InputOption(3, "Update to latest Paper version from your remembered minecraft version", Self.ContainedMinecraftVersion ?? "unknown");
         Logger.InputOption(4, "Create a windows batch script to easily run your server");
         Logger.InputOption(5, "Run the batch file from this application");
         Logger.Space();
@@ -83,16 +83,17 @@ public static class Program {
                 }
                 BatchFuncs.RunServerFromFile();
                 Logger.Space();
-                Logger.ResetColors();
+                Console.ForegroundColor = Logger.OriginalColor;
                 break;
             case "c":
             case "cancel":
             case "exit":
             case "quit":
+                Logger.Warn("Closing . . .", false);
                 Process.GetCurrentProcess().Kill();
                 break;
             default:
-                Logger.Error("Invalid input, please select an option from the list above (1 - 3).");
+                Logger.Error("Invalid input, please select an option from the list above (1 - 5).");
                 Logger.Space();
                 Logger.ResetColors();
                 goto Start;

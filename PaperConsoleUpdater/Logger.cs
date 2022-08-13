@@ -1,9 +1,9 @@
-﻿using System;
-
-namespace PaperUpdater; 
+﻿namespace PaperUpdater; 
 
 public static class Logger {
-    public static void WriteLineCentered(string line, int referenceLength = -1) {
+    public static ConsoleColor OriginalColor;
+    
+    private static void WriteLineCentered(string line, int referenceLength = -1) {
         if (referenceLength < 0)
             referenceLength = line.Length;
 
@@ -126,6 +126,19 @@ public static class Logger {
         Console.WriteLine(text);
         Console.ForegroundColor = foregroundColor;
     }
+    
+    public static void InputOption(int number, string text, string text2, bool optionDisabled = false) {
+        var foregroundColor = Console.ForegroundColor;
+        Console.ForegroundColor = ConsoleColor.Yellow;
+        Console.Write($"{number}. ");
+        Console.ForegroundColor = optionDisabled ? ConsoleColor.DarkGray : foregroundColor;
+        Console.Write(text);
+        Console.ForegroundColor = ConsoleColor.Red;
+        Console.Write(" -> ");
+        Console.ForegroundColor = optionDisabled ? ConsoleColor.DarkGray : ConsoleColor.Green;
+        Console.WriteLine(text2);
+        Console.ForegroundColor = foregroundColor;
+    }
 
     public static void Input(string text) {
         var foregroundColor = Console.ForegroundColor;
@@ -144,6 +157,7 @@ public static class Logger {
         // Console.ForegroundColor = ConsoleColor.Cyan;
         // Console.Write("PaperUpdater");
         WriteLineCentered("Welcome, thanks for using PaperUpdater!");
+        WriteLineCentered("This program is brought to you by Minty Labs, developed by MintLily.");
         ResetColors();
         // Console.WriteLine("!");
     }
