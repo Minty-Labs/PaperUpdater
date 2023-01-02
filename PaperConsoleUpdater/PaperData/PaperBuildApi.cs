@@ -50,6 +50,11 @@ public static class PaperBuildApiJson {
         PaperBuildJsonData = JsonConvert.DeserializeObject<PaperBuild>(json) ?? throw new Exception();
     }
 
+    private static string GetLatestPurpurUrl() {
+        var version = Program.PickingLatest ? PaperProjectApi.LatestPaperProjectVersion : Self.ContainedMinecraftVersion;
+        return $"https://api.purpurmc.org/v2/purpur/{version}/latest/download";
+    }
+
     private static string GetLatestPaperUrl() {
         var version = Program.PickingLatest ? PaperProjectApi.LatestPaperProjectVersion : Self.ContainedMinecraftVersion;
         
@@ -71,14 +76,14 @@ public static class PaperBuildApiJson {
     }
 
     public static void UpdateJarFile() {
-        var url = GetLatestPaperUrl();
+        var url = PaperProjectApi.PaperType == "purpur" ? GetLatestPurpurUrl() : GetLatestPaperUrl();
         if (url.Equals("NO DATA") || string.IsNullOrWhiteSpace(url)) {
             Logger.Error("Data not found or incorrect.");
             return;
         }
         
         var http = new HttpClient();
-        Logger.Log($"Getting latest Paper version from {url}");
+        Logger.Log($"Getting latest {(PaperProjectApi.PaperType == "purpur" ? "Purpur" : "Paper")} version from {url}");
         Logger.Log($"Downloading {_originalPaperFileName}");
         var bytes = http.GetByteArrayAsync(url).GetAwaiter().GetResult();
         var targetFile = Path.Combine(Environment.CurrentDirectory, "paper.jar");

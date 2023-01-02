@@ -28,6 +28,8 @@ public static class Logger {
     public static void ResetColors() => Console.ForegroundColor = ConsoleColor.White;
     
     public static void Space() => Console.WriteLine("");
+    
+    public static void BasicLog(object s) => Console.WriteLine($"{s}");
 
     public static void Log(object s, bool withTimestamp = true) {
         var foregroundColor = Console.ForegroundColor;

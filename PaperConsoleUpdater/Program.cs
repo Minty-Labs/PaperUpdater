@@ -3,6 +3,7 @@ using System.Reflection;
 using PaperUpdater.PaperData;
 using PaperUpdater.Data;
 using PaperUpdater.Functions;
+using Pastel;
 
 namespace PaperUpdater; 
 
@@ -18,16 +19,21 @@ public static class Program {
         PaperProjectApi.LoadProjectData();
         PaperProjectApi.GetLatestPaperProjectVersion();
         Self.Init();
-        
+        reboot:
         Logger.Intro();
         Logger.WriteSeparator('=');
         Logger.Space();
         Start:
+        Logger.BasicLog("Selected Paper Type: " + $"{PaperProjectApi.PaperType}".Pastel(PaperProjectApi.PaperType == "paper" ? "FF55D0" : "B53CFF") +
+                        " | Server Version: " + $"{Self.ContainedMinecraftVersion ?? "unknown"}".Pastel("00ff00"));
+        Logger.Space();
+        var disabled = PaperProjectApi.PaperType != "paper";
         Logger.InputOption(1, "Download/Update to latest paper project version", PaperProjectApi.LatestPaperProjectVersion ?? "unknown");
-        Logger.InputOption(2, "Download a specific paper minecraft server version");
-        Logger.InputOption(3, "Update to latest Paper version from your remembered minecraft version", Self.ContainedMinecraftVersion ?? "unknown");
+        Logger.InputOption(2, "Download a specific paper minecraft server version", disabled);
+        Logger.InputOption(3, "Update to latest Paper version from your remembered minecraft version", Self.ContainedMinecraftVersion ?? "unknown", disabled);
         Logger.InputOption(4, "Create a windows batch script to easily run your server");
         Logger.InputOption(5, "Run the batch file from this application");
+        Logger.InputOption(6, "Change Paper Type");
         Logger.Space();
         Logger.Input("Please select an option: ");
         
@@ -42,10 +48,16 @@ public static class Program {
                 PaperProjectApi.GetLatestPaperProjectVersion();
                 Logger.Log($"Latest version is {PaperProjectApi.LatestPaperProjectVersion}");
                 PaperBuildApiJson.LoadPaperJson(PaperProjectApi.LatestPaperProjectVersion!);
+                PaperBuildApiJson.UpdateJarFile();
                 Logger.ResetColors();
                 goto Start;
             case "2":
                 // Update to specific minecraft version
+                if (disabled) {
+                    Logger.BasicLog("This option is disabled because you have " + "purpur".Pastel("B53CFF") + " selected as your paper type");
+                    Logger.Space();
+                    goto Start;
+                }
                 PickingLatest = false;
                 Logger.Input("Please enter the minecraft version you want to update to download: ");
                 var inputMcVersion = Console.ReadLine();
@@ -61,6 +73,12 @@ public static class Program {
                 goto Start;
             case "3":
                 // Update to latest Paper version from your remembered minecraft version
+                if (disabled) {
+                    Logger.BasicLog("This option is disabled because you have " + "purpur".Pastel("B53CFF") + " selected as your paper type");
+                    Logger.BasicLog("To update " + "purpur".Pastel("B53CFF") + ", please select option " + "#1".Pastel("ffff00"));
+                    Logger.Space();
+                    goto Start;
+                }
                 PickingLatest = false;
                 Logger.Log("One moment...", false);
                 PaperBuildApiJson.LoadPaperJson(Self.ContainedMinecraftVersion!);
@@ -85,7 +103,19 @@ public static class Program {
                 Logger.Space();
                 Console.ForegroundColor = Logger.OriginalColor;
                 break;
+            case "6":
+                Logger.Input("Select a paper type (" + "paper".Pastel("FF55D0") + "/" + "purpur".Pastel("B53CFF") + "): ");
+                var paperType = Console.ReadLine();
+                PaperProjectApi.PaperType = paperType == "purpur" ? "purpur" : "paper";
+                Self.Data!.RememberedPaperType = paperType == "purpur" ? "purpur" : "paper";
+                Self.Save();
+                Console.ForegroundColor = Logger.OriginalColor;
+                Console.Clear();
+                goto reboot;
             case "c":
+            case "e":
+            case "q":
+            case "x":
             case "cancel":
             case "exit":
             case "quit":
@@ -93,7 +123,7 @@ public static class Program {
                 Process.GetCurrentProcess().Kill();
                 break;
             default:
-                Logger.Error("Invalid input, please select an option from the list above (1 - 5).");
+                Logger.Error("Invalid input, please select an option from the list above (1 - 6).");
                 Logger.Space();
                 Logger.ResetColors();
                 goto Start;

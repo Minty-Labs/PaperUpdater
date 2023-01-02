@@ -6,6 +6,8 @@ namespace PaperUpdater.Data;
 public class SelfData {
     [JsonProperty("Remembered Minecraft Version")]
     public string? RememberedMinecraftVersion { get; set; }
+    [JsonProperty("Remembered Paper Type")]
+    public string? RememberedPaperType { get; set; }
 }
 
 public static class Self {
@@ -24,13 +26,19 @@ public static class Self {
                 Directory.CreateDirectory(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Minty Labs", "PaperUpdater"));
         }
         if (!File.Exists($"{_path}{Path.DirectorySeparatorChar}SelfData.json")) {
-            var data = new SelfData { RememberedMinecraftVersion = PaperProjectApi.LatestPaperProjectVersion };
+            var data = new SelfData {
+                RememberedMinecraftVersion = PaperProjectApi.LatestPaperProjectVersion,
+                RememberedPaperType = "paper"
+            };
             File.WriteAllText($"{_path}{Path.DirectorySeparatorChar}SelfData.json", JsonConvert.SerializeObject(data));
         }
         
         Data = JsonConvert.DeserializeObject<SelfData>(File.ReadAllText($"{_path}{Path.DirectorySeparatorChar}SelfData.json")) ?? throw new Exception();
         ContainedMinecraftVersion = Data.RememberedMinecraftVersion;
+        PaperProjectApi.PaperType = GetPaperType();
     }
+
+    private static string GetPaperType() => Data!.RememberedPaperType ??= "paper";
 
     public static void Save() => File.WriteAllText($"{_path}{Path.DirectorySeparatorChar}SelfData.json", JsonConvert.SerializeObject(Data));
 }

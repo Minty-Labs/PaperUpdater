@@ -1,7 +1,7 @@
 <h1>PaperUpdater</h1>
-Simple <a href="https://papermc.io/downloads" target="_blank">papermc.io</a> Minecraft Server file updater. Gets the latest version, downloads it and places the file in the root of where this program's executable file is. Detailed process below.
+Simple <a href="https://papermc.io/downloads" target="_blank">papermc.io</a> or <a href="https://purpurmc.org/" target="_blank">purpurmc.org</a> Minecraft Server file updater. Gets the latest version, downloads it and places the file in the root of where this program's executable file is. Detailed process below.
 
-<h2>How it works</h2>
+<h2>How it works (PaperMC)</h2>
 Logic below is held and processed in <a href="PaperConsoleUpdater/PaperData/PaperProjectApi.cs">PaperProjectApi.cs</a>
 <ul>
 	<li>Getting the latest paper project version
@@ -14,7 +14,7 @@ Logic below is held and processed in <a href="PaperConsoleUpdater/PaperData/Pape
 			</li>
 			<li>It finds the list of strings in <code>versions</code> (last is latest)</li>
 			<li>It verifies that the <code>project_id</code> is <code>paper</code></li>
-			<li>Stores it in a string that should be <code>1.19.2</code></li>
+			<li>Stores it in a string that should be <code>1.19.3</code></li>
 		</ul>
 	</li>
 </ul>
@@ -25,13 +25,13 @@ Logic below is held and processed in <a href="PaperConsoleUpdater/PaperData/Pape
 		<ul>
 			<li>Gets JSON data from API URL:
 				<ul>
-					<li>API URL: <code>https://api.papermc.io/v2/projects/paper/versions/1.19.2/builds</code></li>
-					<li>Outputs: JSON structured data with every build of paper 1.19.2</li>
+					<li>API URL: <code>https://api.papermc.io/v2/projects/paper/versions/1.19.3/builds</code></li>
+					<li>Outputs: JSON structured data with every build of paper 1.19.3</li>
 				</ul>
 			</li>
 			<li>It gets the last entry in the list of <code>builds</code> (last is latest)</li>
 			<li>It then verifies that the <code>channel</code> is <code>default</code></li>
-			<li>Outputs a completed URL <code>https://api.papermc.io/v2/projects/paper/versions/1.19.2/builds/{buildNumber}/downloads/{buildName}</code></li>
+			<li>Outputs a completed URL <code>https://api.papermc.io/v2/projects/paper/versions/1.19.3/builds/{buildNumber}/downloads/{buildName}</code></li>
 		</ul>
 	</li>
 	<li>Updating the file
@@ -44,6 +44,11 @@ Logic below is held and processed in <a href="PaperConsoleUpdater/PaperData/Pape
 	</li>
 </ul>
 
+<h2>How it works (PurpurMC)</h2>
+Their API easily lets me only get the latest version of their server. It doesn't have to do any of the logic I did for PaperMC. I just get the latest version and download it. Simple as that.<br>
+Logic below is held and processed in <a href="PaperConsoleUpdater/PaperData/PaperBuildApi.cs#L53">PaperProjectApi.cs</a> Line 53, which gets applied on <a href="PaperConsoleUpdater/PaperData/PaperBuildApi.cs#L79">line 79</a>
+
+<h2>How it works (Overall)</h2>
 Logic below is held and processed in <a href="PaperConsoleUpdater/Functions/BatchFuncs.cs">BatchFuncs.cs</a>
 <ul>
 	<li>Creating a batch file
@@ -93,12 +98,18 @@ I, Lily, am in no way affiliated with PaperMC nor Microsoft/Mojang Studios. Any 
 <h2>Application Info</h2>
 <ul>
 	<li>Type: <code>Console Application (dotNET 6)</code></li>
-	<li>Version: <code>v1.4.0.0</code></li>
-	<li>Nuget Packages: <code>Newtonsoft.Json - 13.0.2-beta1</code></li>
+    <li>IDE: <code>JetBrains Rider - 2022.3.1</code></li>
+	<li>Version: <code>v1.5.0.0</code></li>
+	<li>Nuget Packages:
+        <ul>
+            <li><code>Newtonsoft.Json - 13.0.2</code></li>
+            <li><code>Pastel - 4.1.0</code></li>
+        </ul>
+    </li>
 	<li>Checksum SHA-256
 		<ul>
-			<li>Windows: <code>fd49eafb9adacb2ad917559eaf2a9fd33c477147c53005eda9ebd520de9a3df6</code></li>
-			<li>Linux:   <code>6fa1ee49f3fd10e75ac37c32b57ad0b8ac76daddba6d66829a492b142f11178d</code></li>
+			<li>Windows: <code>1f77cfae88a39c75b1fa0e9e2c3b172fba48ac2521e4951b267f120a66b6e38d</code></li>
+			<li>Linux:   <code>6da4bf58067a2a5b0627bc7479793447d7216d6fe49c0074f9da888c56818919</code></li>
 		</ul>
 	</li>
 </ul>
