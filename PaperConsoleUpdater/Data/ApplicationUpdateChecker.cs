@@ -1,7 +1,7 @@
 ﻿namespace PaperUpdater.Data; 
 
 public static class ApplicationUpdateChecker {
-    private static string[] _ignoredVersionTags = { "1.0.0", "1.1.0", "1.2.0", "1.3.0", "1.3.1" };
+    private static readonly string[] IgnoredVersionTags = { "1.0.0", "1.1.0", "1.2.0", "1.3.0", "1.3.1", "1.4.0" };
     private static readonly string LazyTag = "\"tag_name\": \"" + "1.4.0" + "\"";
     private const string GitHub = "https://api.github.com/repos/Minty-Labs/PaperUpdater/releases";
 
@@ -15,14 +15,8 @@ public static class ApplicationUpdateChecker {
     public static void CheckForUpdates() {
         try {
             var s = GetString().GetAwaiter().GetResult();
-            
-            // Console.WriteLine(s);
-            
-            s = _ignoredVersionTags.Aggregate(s, (current, t) => current.Replace("\"tag_name\": \"" + t + "\"", "\"tag_name\": \"old\""));
+            s = IgnoredVersionTags.Aggregate(s, (current, t) => current.Replace("\"tag_name\": \"" + t + "\"", "\"tag_name\": \"old\""));
 
-            // Console.WriteLine("======== NEW ========");
-            // Console.WriteLine(s);
-            
             if (s.Contains(LazyTag)) {
                 if (Program.IsRunningDebug)
                     Logger.Log("Versions are matching");
